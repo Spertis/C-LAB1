@@ -1,4 +1,4 @@
-//Copyright 2021 Enigma
+//Copyright 2021 Spertis
 #include <header.hpp>
 #include "Student.hpp"
 json takeJson(int argc, char** argv) {
