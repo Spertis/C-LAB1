@@ -22,4 +22,4 @@ notifications:
 
 branches:
   - only:
-    - master
+    - maste
