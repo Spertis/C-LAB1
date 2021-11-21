@@ -1,4 +1,4 @@
-//Copyright 2021 Enigma
+//Copyright 2021 Spertis
 
 #define TEST_CPP_
 #ifdef TEST_CPP_
@@ -44,16 +44,16 @@ TEST(printTest, json)
   std::string jsonData = "{\n"
       "  \"items\": [\n"
       "    {\n"
-      "      \"name\": \"Akakiy Akaki\",\n"
-      "      \"group\": \"UI8-32\",\n"
-      "      \"avg\": \"5.25\",\n"
+      "      \"name\": \"Ivanov Ivan\",\n"
+      "      \"group\": \"U8+2-32\",\n"
+      "      \"avg\": \"4.95\",\n"
       "      \"debt\": null\n"
       "    },\n"
       "    {\n"
-      "      \"name\": \"Ded Asambler\",\n"
-      "      \"group\": 32,\n"
-      "      \"avg\": 3.75,\n"
-      "      \"debt\": \"asembler\"\n"
+      "      \"name\": \"Machine Robot\",\n"
+      "      \"group\": 15,\n"
+      "      \"avg\": 6.66,\n"
+      "      \"debt\": \"C\"\n"
       "    }\n"
       "  ],\n"
       "  \"_meta\": {\n"
@@ -66,9 +66,9 @@ TEST(printTest, json)
   print(students_parsed, ss);
   ASSERT_EQ("| name                | group     | avg       | debt      |\n"
       "|---------------------|-----------|-----------|-----------|\n"
-      "| Akakiy Akaki        | UI8-32    | 5.25      | null      |\n"
+      "| Ivanov Ivan         | U8+2-32   | 4.95      | null      |\n"
       "|---------------------|-----------|-----------|-----------|\n"
-      "| Ded Asambler        | 32        | 3.75      | asembler  |\n"
+      "| Machine Robot       | 15        | 6.66      | C         |\n"
       "|---------------------|-----------|-----------|-----------|\n", ss.str());
 }
 
@@ -77,16 +77,16 @@ TEST(parseTest, jsonParse)
   std::string jsonData = "{\n"
       "  \"items\": [\n"
       "    {\n"
-      "      \"name\": \"Akakiy Akaki\",\n"
-      "      \"group\": \"UI8-32\",\n"
+      "      \"name\": \"Ivanov Ivan\",\n"
+      "      \"group\": \"IU8-32\",\n"
       "      \"avg\": \"5.25\",\n"
       "      \"debt\": null\n"
       "    },\n"
       "    {\n"
-      "      \"name\": \"Ded Asambler\",\n"
+      "      \"name\": \"Machine Robot\",\n"
       "      \"group\": 32,\n"
-      "      \"avg\": 3.75,\n"
-      "      \"debt\": \"asembler\"\n"
+      "      \"avg\": 6.66,\n"
+      "      \"debt\": \"C\"\n"
       "    }\n"
       "  ],\n"
       "  \"_meta\": {\n"
@@ -96,10 +96,10 @@ TEST(parseTest, jsonParse)
     nlohmann::json _json = json::parse(jsonData);
     std::vector<Student> students_parsed = parsingJson(_json);
     std::vector<Student> student_inited = {
-        Student("Akakiy Akaki", (std::string)"UI8-32",
+        Student("Ivanov Ivan", (std::string)"IU8-32",
                 (std::string)"5.25", nullptr),
-        Student("Ded Asambler", (size_t)32,
-                (double)3.75, (std::string)"asembler")
+        Student("Machine Robot", (size_t)32,
+                (double)6.66, (std::string)"C")
     };
     ASSERT_EQ(student_inited, students_parsed);
 }
@@ -108,20 +108,20 @@ TEST(parseTest, fromFile)
   std::string jsonData = "{\n"
       "  \"items\": [\n"
       "    {\n"
-      "      \"name\": \"Akakiy Akaki\",\n"
+      "      \"name\": \"Ivanov Ivan\",\n"
       "      \"group\": \"2\",\n"
-      "      \"avg\": \"5.25\",\n"
+      "      \"avg\": \"6.66\",\n"
       "      \"debt\":  [\n"
       "        \"Java\",\n"
-      "        \"C++\",\n"
-      "        \"Games\"\n"
+      "        \"Python\",\n"
+      "        \"LoL\"\n"
       "      ]\n"
       "    },\n"
       "    {\n"
-      "      \"name\": \"Ded Asembler\",\n"
+      "      \"name\": \"Terr Terr\",\n"
       "      \"group\": 32,\n"
       "      \"avg\": 3.75,\n"
-      "      \"debt\": \"asembler\"\n"
+      "      \"debt\": \"LoL\"\n"
       "    }\n"
       "  ],\n"
       "  \"_meta\": {\n"

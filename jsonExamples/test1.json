@@ -1,20 +1,20 @@
 {
   "items": [
     {
-      "name": "Akakiy Akaki",
+      "name": "Ivanov Ivan",
       "group": "2",
-      "avg": "5.25",
+      "avg": "6.66",
       "debt":  [
         "Java",
-        "C++",
-        "Games"
+        "Python",
+        "LoL"
       ]
     },
     {
-      "name": "Ded Asembler",
+      "name": "Terr Terr",
       "group": 32,
       "avg": 3.75,
-      "debt": "asembler"
+      "debt": "LoL"
     }
   ],
   "_meta": {

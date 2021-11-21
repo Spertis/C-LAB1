@@ -7,28 +7,28 @@
 std::string toString(std::any& item)
 {
   std::stringstream ss;
-  int check = 0;
+  int chk = 0;
   if (item.type() == typeid(std::nullptr_t)){
     ss << "null";
-    check = check + 1;
+    chk++;
   }
   if (item.type() == typeid(std::string)){
     ss << std::any_cast<std::string>(item);
-    check = check + 1;
+    chk++;
   }
   if (item.type() == typeid(double)){
     ss << std::any_cast<double>(item);
-    check = check + 1;
+    chk++;
   }
   if (item.type() == typeid(std::vector<std::string>)){
     ss << std::any_cast<std::vector<std::string> >(item).size();
-    check = check + 1;
+    chk++;
   }
   if (item.type() == typeid(size_t)){
     ss << std::any_cast<size_t>(item);
-    check = check + 1;
+    chk++;
   }
-  if (check == 0)
+  if (chk == 0)
     ss << "error";
   return ss.str();
 }
