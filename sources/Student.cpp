@@ -16,7 +16,9 @@ bool anyCompare(std::any tmplate, std::any curItem)
   if (tmplate.type() != curItem.type())
     return false;
   if (tmplate.type() == typeid(std::string))
-    return std::any_cast<std::string>(tmplate) == std::any_cast<std::string>(curItem);
+    return std::any_cast<std::string>(tmplate)
+        == std::any_cast<std::string>(curItem);
+
   if (tmplate.type() == typeid(nullptr))
     return true;
   if (tmplate.type() == typeid(double))
