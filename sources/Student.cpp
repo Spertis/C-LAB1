@@ -11,24 +11,23 @@ Student::Student(std::string _name, std::any _group,
   avg = std::move(_avg);
   debt = std::move(_debt);
 }
-bool anyCompare(std::any tmplate, std::any curItem)
+bool anyCompare(std::any tmplt, std::any cItem)
 {
-  if (tmplate.type() != curItem.type())
+  if (tmplt.type() != cItem.type())
     return false;
-  if (tmplate.type() == typeid(std::string))
-    return std::any_cast<std::string>(tmplate)
-        == std::any_cast<std::string>(curItem);
+  if (tmplt.type() == typeid(std::string))
+    return std::any_cast<std::string>(tmplt)==std::any_cast<std::string>(cItem);
 
-  if (tmplate.type() == typeid(nullptr))
+  if (tmplt.type() == typeid(nullptr))
     return true;
-  if (tmplate.type() == typeid(double))
-    return std::any_cast<double>(tmplate) == std::any_cast<double>(curItem);
-  if (tmplate.type() == typeid(size_t))
-   return std::any_cast<size_t>(tmplate) == std::any_cast<size_t>(curItem);
-  if (tmplate.type() == typeid(std::vector<std::string>))
+  if (tmplt.type() == typeid(double))
+    return std::any_cast<double>(tmplt) == std::any_cast<double>(cItem);
+  if (tmplt.type() == typeid(size_t))
+   return std::any_cast<size_t>(tmplt) == std::any_cast<size_t>(cItem);
+  if (tmplt.type() == typeid(std::vector<std::string>))
     return
-        std::any_cast<std::vector<std::string>>(tmplate)
-           == std::any_cast<std::vector<std::string>>(curItem);
+        std::any_cast<std::vector<std::string>>(tmplt)
+           == std::any_cast<std::vector<std::string>>(cItem);
   return false;
 }
 bool Student::operator==(const Student& student) const
