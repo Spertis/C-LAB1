@@ -13,7 +13,7 @@ Student::Student(std::string _name, std::any _group,
   avg = std::move(_avg);
   debt = std::move(_debt);
 }
-bool anyCompare(std::any org, std::any cItem)
+bool anyCompare(any org, any cItem)
 {
   if (org.type() != cItem.type())
     return false;
@@ -23,13 +23,13 @@ bool anyCompare(std::any org, std::any cItem)
   if (org.type() == typeid(nullptr))
     return true;
   if (org.type() == typeid(double))
-    return std::any_cast<double>(org) == std::any_cast<double>(cItem);
+    return any_cast<double>(org) == any_cast<double>(cItem);
   if (org.type() == typeid(size_t))
-   return std::any_cast<size_t>(org) == std::any_cast<size_t>(cItem);
+   return any_cast<size_t>(org) == any_cast<size_t>(cItem);
   if (org.type() == typeid(std::vector<std::string>))
     return
-        std::any_cast<std::vector<std::string>>(org)
-           == std::any_cast<std::vector<std::string>>(cItem);
+        any_cast<std::vector<std::string>>(org)
+           == any_cast<std::vector<std::string>>(cItem);
   return false;
 }
 bool Student::operator==(const Student& student) const
@@ -46,7 +46,7 @@ Student::Student() = default;
 auto get_name(const json& item) -> std::string {
   return item.get<std::string>();
 }
-auto get_debt(const json& item) -> std::any {
+auto get_debt(const json& item) -> any {
   if (item.is_null())
     return nullptr;
   else if (item.is_string())
@@ -55,7 +55,7 @@ auto get_debt(const json& item) -> std::any {
     return item.get<std::vector<std::string>>();
 }
 
-auto get_avg(const json& item) -> std::any {
+auto get_avg(const json& item) -> any {
   if (item.is_null())
     return nullptr;
   else if (item.is_string())
@@ -66,7 +66,7 @@ auto get_avg(const json& item) -> std::any {
     return item.get<std::size_t>();
 }
 
-auto get_group(const json& item) -> std::any {
+auto get_group(const json& item) -> any {
   if (item.is_string())
     return item.get<std::string>();
   else
