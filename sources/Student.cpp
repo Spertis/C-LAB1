@@ -16,7 +16,7 @@ bool anyCompare(std::any tmplt, std::any cItem)
   if (tmplt.type() != cItem.type())
     return false;
   if (tmplt.type() == typeid(std::string))
-    return std::any_cast<std::string>(tmplt)==std::any_cast<std::string>(cItem);
+    return std::any_cast<std::string>(tmplt) == std::any_cast<std::string>(cItem);
 
   if (tmplt.type() == typeid(nullptr))
     return true;
