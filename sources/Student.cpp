@@ -3,6 +3,8 @@
 #include "Student.hpp"
 #include <iomanip>
 #include <utility>
+using std::any,
+    std::any_cast;
 
 Student::Student(std::string _name, std::any _group,
                  std::any _avg, std::any _debt) {
@@ -11,22 +13,22 @@ Student::Student(std::string _name, std::any _group,
   avg = std::move(_avg);
   debt = std::move(_debt);
 }
-bool anyCompare(std::any tmplt, std::any cItem)
+bool anyCompare(std::any org, std::any cItem)
 {
-  if (tmplt.type() != cItem.type())
+  if (org.type() != cItem.type())
     return false;
-  if (tmplt.type() == typeid(std::string))
-    return std::any_cast<std::string>(tmplt) == std::any_cast<std::string>(cItem);
+  if (org.type() == typeid(std::string))
+    return any_cast<std::string>(org) == any_cast<std::string>(cItem);
 
-  if (tmplt.type() == typeid(nullptr))
+  if (org.type() == typeid(nullptr))
     return true;
-  if (tmplt.type() == typeid(double))
-    return std::any_cast<double>(tmplt) == std::any_cast<double>(cItem);
-  if (tmplt.type() == typeid(size_t))
-   return std::any_cast<size_t>(tmplt) == std::any_cast<size_t>(cItem);
-  if (tmplt.type() == typeid(std::vector<std::string>))
+  if (org.type() == typeid(double))
+    return std::any_cast<double>(org) == std::any_cast<double>(cItem);
+  if (org.type() == typeid(size_t))
+   return std::any_cast<size_t>(org) == std::any_cast<size_t>(cItem);
+  if (org.type() == typeid(std::vector<std::string>))
     return
-        std::any_cast<std::vector<std::string>>(tmplt)
+        std::any_cast<std::vector<std::string>>(org)
            == std::any_cast<std::vector<std::string>>(cItem);
   return false;
 }
