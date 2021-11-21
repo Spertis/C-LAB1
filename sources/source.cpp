@@ -11,14 +11,14 @@ json takeJson(int argc, char** argv) {
   if (!data.at("items").is_array())
     throw std::runtime_error{"the array must be contained in the file"};
 
-  if (data.at("items").size() != data.at("_meta").at("count").get<size_t>())
+  if (data.at("items").size() != data.at("_meta").at("count").get<ulong>())
     throw std::runtime_error{"_meta value does not match the array size"};
   return data;
 }
-std::vector<Student> parsingJson(json& data)
+std::vector<Student> parsingJson(json data)
 {
   std::vector<Student> students;
-  for (auto const& item : data.at("items"))
+  for (const auto& item : data.at("items"))
   {
     Student student1;
     from_json(item, student1);

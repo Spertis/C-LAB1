@@ -70,9 +70,9 @@ auto get_group(const json& j) -> std::any {
     return j.get<std::size_t>();
 }
 
-void from_json(const json& j, Student& s) {
-  s.name = get_name(j.at("name"));
-  s.group = get_group(j.at("group"));
-  s.avg = get_avg(j.at("avg"));
-  s.debt = get_debt(j.at("debt"));
+void from_json(const json& item, Student& student1) {
+  student1.name = get_name(item.at("name"));
+  student1.group = get_group(item.at("group"));
+  student1.avg = get_avg(item.at("avg"));
+  student1.debt = get_debt(item.at("debt"));
 }
